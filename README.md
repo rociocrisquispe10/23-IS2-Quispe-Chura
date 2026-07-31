@@ -15,10 +15,6 @@ Miniaplicación estática para la actividad individual de aseguramiento de calid
 
 **Descripción técnica:** al hacer clic en "Registrar devolución", la aplicación muestra un cuadro de confirmación (`window.confirm`) con el equipo y el solicitante involucrados. Si el usuario acepta, el estado del préstamo cambia a `Devuelto` y se guarda en `localStorage`. Si el usuario cancela, no se modifica ningún dato y el préstamo permanece `Activo`. El cambio se implementó únicamente en `app.js`, dentro del listener de clic de la tabla de préstamos (`loanList`).
 
-## Diseño visual
-
-Se rediseñó `style.css` con una identidad propia inspirada en una **consola de inventario de laboratorio**: paleta verde bosque / naranja rótulo, tipografías Space Grotesk (títulos) + IBM Plex Sans (texto) + IBM Plex Mono (códigos), y una etiqueta de equipo con borde punteado que imita un rótulo físico de activo (`EQ-01`, `EQ-02`, etc.). No se modificó ningún `id` usado por `app.js`, por lo que la funcionalidad original y la mejora de la Ficha 23 siguen intactas.
-
 ## Funcionalidad inicial
 
 - Registra un préstamo de un equipo disponible.
