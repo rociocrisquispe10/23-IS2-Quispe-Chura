@@ -125,8 +125,25 @@ form.addEventListener("submit", (event) => {
 loanList.addEventListener("click", (event) => {
   const button = event.target.closest(".return-btn");
   if (!button) return;
-  const loans = loadLoans().map((loan) => loan.id === button.dataset.id ? { ...loan, status: "Devuelto" } : loan);
-  saveLoans(loans);
+
+  const loans = loadLoans();
+  const loan = loans.find((item) => item.id === button.dataset.id);
+  if (!loan) return;
+
+  // Ficha 23 — Confirmación de devolución:
+  // se solicita confirmación antes de cambiar el estado a "Devuelto".
+  const confirmed = confirm(
+    `¿Confirma que "${loan.equipmentName}" prestado a ${loan.borrower} fue devuelto?`
+  );
+  if (!confirmed) {
+    // Al cancelar, el préstamo conserva su estado "Activo" (sin cambios).
+    return;
+  }
+
+  const updatedLoans = loans.map((item) =>
+    item.id === button.dataset.id ? { ...item, status: "Devuelto" } : item
+  );
+  saveLoans(updatedLoans);
   renderLoans();
 });
 
